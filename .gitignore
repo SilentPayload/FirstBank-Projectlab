@@ -24,6 +24,9 @@ Thumbs.db
 *.swp
 *.swo
 
+# Claude Code
+.claude/
+
 # Instructor-only — not for student repo
 instructor/
 SETUP.md
