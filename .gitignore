@@ -24,8 +24,11 @@ Thumbs.db
 *.swp
 *.swo
 
+# Instructor-only — not for student repo
+instructor/
+SETUP.md
+
 # Generated reports from test runs
-instructor/reference_report*.txt
 student/incident_report*.txt
 logs/
 __pycache__/

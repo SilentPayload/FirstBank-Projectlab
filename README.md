@@ -37,14 +37,10 @@ banking-soc-project/
 │   └── Dockerfile
 ├── splunk/
 │   └── banking_soc/            # Splunk app (inputs.conf, props.conf)
-├── student/
-│   ├── README.md               # ← Student start here
-│   ├── analysis.py             # Skeleton for students to complete
-│   └── requirements.txt
-├── instructor/
-│   ├── analysis_answer_key.py  # Fully implemented reference
-│   └── ANSWER_KEY.md           # Expected findings + grading rubric
-└── SETUP.md                    # Instructor notes (seeds, grading, troubleshooting)
+└── student/
+    ├── README.md               # ← Student start here
+    ├── analysis.py             # Skeleton for students to complete
+    └── requirements.txt
 ```
 
 ## Quick Start (Students)
@@ -56,10 +52,6 @@ cp .env.example .env          # set STUDENT_SEED and SPLUNK_PASSWORD
 docker compose up --build     # generates logs + starts Splunk
 # Open http://localhost:8000 after ~90 s
 ```
-
-## Quick Start (Instructors)
-
-See **`SETUP.md`** for seed assignment, grading workflow, and troubleshooting.
 
 ## Data Sources
 
