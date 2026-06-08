@@ -1,0 +1,214 @@
+2026-02-20 08:00:00 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.4.44 WorkstationName=WKST-010 TargetServerName=WKST-010 Status=Success
+2026-02-20 08:06:45 EventCode=4624 LogonType=2 AccountName=tunde.afolabi SourceIP=10.10.1.49 WorkstationName=WKST-015 TargetServerName=WKST-015 Status=Success
+2026-02-20 08:16:14 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.3.62 WorkstationName=WKST-014 TargetServerName=WKST-014 Status=Success
+2026-02-20 08:24:56 EventCode=4624 LogonType=2 AccountName=kemi.lawal SourceIP=10.10.1.31 WorkstationName=WKST-024 TargetServerName=WKST-024 Status=Success
+2026-02-20 08:33:49 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.5.51 WorkstationName=WKST-029 TargetServerName=WKST-029 Status=Success
+2026-02-20 08:38:11 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.2.22 WorkstationName=WKST-008 TargetServerName=WKST-008 Status=Success
+2026-02-20 08:46:27 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.3.48 WorkstationName=WKST-016 TargetServerName=WKST-016 Status=Success
+2026-02-20 08:53:38 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.3.98 WorkstationName=WKST-009 TargetServerName=WKST-009 Status=Success
+2026-02-20 09:03:06 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.2.35 WorkstationName=WKST-028 TargetServerName=WKST-028 Status=Success
+2026-02-20 09:12:57 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.2.88 WorkstationName=WKST-010 TargetServerName=WKST-010 Status=Success
+2026-02-20 09:20:36 EventCode=4624 LogonType=2 AccountName=chidi.nwosu SourceIP=10.10.5.99 WorkstationName=WKST-017 TargetServerName=WKST-017 Status=Success
+2026-02-20 09:25:04 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-009 Status=Success
+2026-02-20 09:25:07 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-016 Status=Success
+2026-02-20 09:27:54 EventCode=4624 LogonType=2 AccountName=adaobi.okafor SourceIP=10.10.5.78 WorkstationName=WKST-009 TargetServerName=WKST-009 Status=Success
+2026-02-20 09:29:52 EventCode=4634 LogonType=2 AccountName=kemi.lawal WorkstationName=WKST-024 Status=Success
+2026-02-20 09:30:05 EventCode=4624 LogonType=2 AccountName=emeka.eze SourceIP=10.10.4.62 WorkstationName=WKST-001 TargetServerName=WKST-001 Status=Success
+2026-02-20 09:32:44 EventCode=4624 LogonType=2 AccountName=kemi.lawal SourceIP=10.10.1.100 WorkstationName=WKST-021 TargetServerName=WKST-021 Status=Success
+2026-02-20 09:41:26 EventCode=4624 LogonType=2 AccountName=emeka.eze SourceIP=10.10.2.61 WorkstationName=WKST-019 TargetServerName=WKST-019 Status=Success
+2026-02-20 09:50:17 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.3.47 WorkstationName=WKST-018 TargetServerName=WKST-018 Status=Success
+2026-02-20 09:53:41 EventCode=4624 LogonType=2 AccountName=segun.bello SourceIP=10.10.2.94 WorkstationName=WKST-004 TargetServerName=WKST-004 Status=Success
+2026-02-20 09:58:00 EventCode=4624 LogonType=2 AccountName=emeka.eze SourceIP=10.10.5.99 WorkstationName=WKST-009 TargetServerName=WKST-009 Status=Success
+2026-02-20 10:06:59 EventCode=4624 LogonType=2 AccountName=segun.bello SourceIP=10.10.4.30 WorkstationName=WKST-009 TargetServerName=WKST-009 Status=Success
+2026-02-20 10:09:28 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.3.27 WorkstationName=WKST-019 TargetServerName=WKST-019 Status=Success
+2026-02-20 10:17:08 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.1.53 WorkstationName=WKST-003 TargetServerName=WKST-003 Status=Success
+2026-02-20 10:20:23 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.2.50 WorkstationName=WKST-020 TargetServerName=WKST-020 Status=Success
+2026-02-20 10:21:42 EventCode=4634 LogonType=2 AccountName=emeka.eze WorkstationName=WKST-019 Status=Success
+2026-02-20 10:23:37 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-029 Status=Success
+2026-02-20 10:27:39 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.3.34 WorkstationName=WKST-013 TargetServerName=WKST-013 Status=Success
+2026-02-20 10:36:29 EventCode=4624 LogonType=2 AccountName=segun.bello SourceIP=10.10.3.54 WorkstationName=WKST-020 TargetServerName=WKST-020 Status=Success
+2026-02-20 10:38:08 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-018 Status=Success
+2026-02-20 10:38:12 EventCode=4634 LogonType=2 AccountName=tunde.afolabi WorkstationName=WKST-015 Status=Success
+2026-02-20 10:39:46 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-028 Status=Success
+2026-02-20 10:44:25 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.1.28 WorkstationName=WKST-021 TargetServerName=WKST-021 Status=Success
+2026-02-20 10:51:58 EventCode=4624 LogonType=2 AccountName=adaobi.okafor SourceIP=10.10.1.28 WorkstationName=WKST-008 TargetServerName=WKST-008 Status=Success
+2026-02-20 10:55:57 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-008 Status=Success
+2026-02-20 10:55:58 EventCode=4624 LogonType=2 AccountName=emeka.eze SourceIP=10.10.1.92 WorkstationName=WKST-026 TargetServerName=WKST-026 Status=Success
+2026-02-20 10:59:08 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-014 Status=Success
+2026-02-20 11:00:15 EventCode=4624 LogonType=2 AccountName=kemi.lawal SourceIP=10.10.3.16 WorkstationName=WKST-013 TargetServerName=WKST-013 Status=Success
+2026-02-20 11:04:21 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.3.21 WorkstationName=WKST-028 TargetServerName=WKST-028 Status=Success
+2026-02-20 11:10:40 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-003 Status=Success
+2026-02-20 11:11:52 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.1.26 WorkstationName=WKST-019 TargetServerName=WKST-019 Status=Success
+2026-02-20 11:20:05 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.5.61 WorkstationName=WKST-018 TargetServerName=WKST-018 Status=Success
+2026-02-20 11:26:28 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-010 Status=Success
+2026-02-20 11:27:19 EventCode=4634 LogonType=2 AccountName=emeka.eze WorkstationName=WKST-001 Status=Success
+2026-02-20 11:28:34 EventCode=4634 LogonType=2 AccountName=adaobi.okafor WorkstationName=WKST-008 Status=Success
+2026-02-20 11:28:52 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.2.64 WorkstationName=WKST-013 TargetServerName=WKST-013 Status=Success
+2026-02-20 11:31:24 EventCode=4634 LogonType=2 AccountName=kemi.lawal WorkstationName=WKST-021 Status=Success
+2026-02-20 11:31:38 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-020 Status=Success
+2026-02-20 11:35:25 EventCode=4624 LogonType=2 AccountName=adaobi.okafor SourceIP=10.10.3.38 WorkstationName=WKST-028 TargetServerName=WKST-028 Status=Success
+2026-02-20 11:36:34 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-010 Status=Success
+2026-02-20 11:40:29 EventCode=4634 LogonType=2 AccountName=adaobi.okafor WorkstationName=WKST-009 Status=Success
+2026-02-20 11:43:11 EventCode=4624 LogonType=2 AccountName=adaobi.okafor SourceIP=10.10.5.12 WorkstationName=WKST-007 TargetServerName=WKST-007 Status=Success
+2026-02-20 11:46:47 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-019 Status=Success
+2026-02-20 11:49:15 EventCode=4624 LogonType=2 AccountName=chidi.nwosu SourceIP=10.10.3.74 WorkstationName=WKST-029 TargetServerName=WKST-029 Status=Success
+2026-02-20 11:50:52 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-019 Status=Success
+2026-02-20 11:51:08 EventCode=4634 LogonType=2 AccountName=segun.bello WorkstationName=WKST-004 Status=Success
+2026-02-20 11:56:55 EventCode=4634 LogonType=2 AccountName=chidi.nwosu WorkstationName=WKST-017 Status=Success
+2026-02-20 11:57:33 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.1.66 WorkstationName=WKST-022 TargetServerName=WKST-022 Status=Success
+2026-02-20 12:00:14 EventCode=4634 LogonType=2 AccountName=segun.bello WorkstationName=WKST-009 Status=Success
+2026-02-20 12:04:09 EventCode=4624 LogonType=2 AccountName=kemi.lawal SourceIP=10.10.3.48 WorkstationName=WKST-003 TargetServerName=WKST-003 Status=Success
+2026-02-20 12:07:26 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.5.38 WorkstationName=WKST-019 TargetServerName=WKST-019 Status=Success
+2026-02-20 12:10:45 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.3.85 WorkstationName=WKST-001 TargetServerName=WKST-001 Status=Success
+2026-02-20 12:16:52 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-013 Status=Success
+2026-02-20 12:19:05 EventCode=4624 LogonType=2 AccountName=emeka.eze SourceIP=10.10.1.38 WorkstationName=WKST-025 TargetServerName=WKST-025 Status=Success
+2026-02-20 12:27:46 EventCode=4624 LogonType=2 AccountName=tunde.afolabi SourceIP=10.10.1.25 WorkstationName=WKST-008 TargetServerName=WKST-008 Status=Success
+2026-02-20 12:33:13 EventCode=4634 LogonType=2 AccountName=chidi.nwosu WorkstationName=WKST-029 Status=Success
+2026-02-20 12:34:05 EventCode=4624 LogonType=2 AccountName=emeka.eze SourceIP=10.10.3.87 WorkstationName=WKST-013 TargetServerName=WKST-013 Status=Success
+2026-02-20 12:40:28 EventCode=4624 LogonType=2 AccountName=tunde.afolabi SourceIP=10.10.1.89 WorkstationName=WKST-022 TargetServerName=WKST-022 Status=Success
+2026-02-20 12:44:34 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-018 Status=Success
+2026-02-20 12:45:41 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.5.49 WorkstationName=WKST-013 TargetServerName=WKST-013 Status=Success
+2026-02-20 12:49:51 EventCode=4624 LogonType=2 AccountName=segun.bello SourceIP=10.10.2.31 WorkstationName=WKST-010 TargetServerName=WKST-010 Status=Success
+2026-02-20 12:50:28 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-028 Status=Success
+2026-02-20 12:51:17 EventCode=4634 LogonType=2 AccountName=segun.bello WorkstationName=WKST-020 Status=Success
+2026-02-20 12:52:35 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.3.99 WorkstationName=WKST-006 TargetServerName=WKST-006 Status=Success
+2026-02-20 12:59:50 EventCode=4624 LogonType=2 AccountName=adaobi.okafor SourceIP=10.10.4.66 WorkstationName=WKST-020 TargetServerName=WKST-020 Status=Success
+2026-02-20 13:01:04 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-021 Status=Success
+2026-02-20 13:02:56 EventCode=4624 LogonType=2 AccountName=chidi.nwosu SourceIP=10.10.1.35 WorkstationName=WKST-017 TargetServerName=WKST-017 Status=Success
+2026-02-20 13:03:46 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-022 Status=Success
+2026-02-20 13:07:34 EventCode=4634 LogonType=2 AccountName=kemi.lawal WorkstationName=WKST-013 Status=Success
+2026-02-20 13:09:37 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-013 Status=Success
+2026-02-20 13:10:45 EventCode=4624 LogonType=2 AccountName=adaobi.okafor SourceIP=10.10.2.67 WorkstationName=WKST-017 TargetServerName=WKST-017 Status=Success
+2026-02-20 13:14:33 EventCode=4634 LogonType=2 AccountName=tunde.afolabi WorkstationName=WKST-008 Status=Success
+2026-02-20 13:15:12 EventCode=4624 LogonType=2 AccountName=tunde.afolabi SourceIP=10.10.1.98 WorkstationName=WKST-006 TargetServerName=WKST-006 Status=Success
+2026-02-20 13:18:05 EventCode=4624 LogonType=2 AccountName=emeka.eze SourceIP=10.10.2.50 WorkstationName=WKST-012 TargetServerName=WKST-012 Status=Success
+2026-02-20 13:20:13 EventCode=4634 LogonType=2 AccountName=emeka.eze WorkstationName=WKST-009 Status=Success
+2026-02-20 13:23:15 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.1.52 WorkstationName=WKST-025 TargetServerName=WKST-025 Status=Success
+2026-02-20 13:26:16 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.2.85 WorkstationName=WKST-001 TargetServerName=WKST-001 Status=Success
+2026-02-20 13:31:21 EventCode=4624 LogonType=2 AccountName=segun.bello SourceIP=10.10.3.51 WorkstationName=WKST-016 TargetServerName=WKST-016 Status=Success
+2026-02-20 13:38:11 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.1.99 WorkstationName=WKST-008 TargetServerName=WKST-008 Status=Success
+2026-02-20 13:40:17 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.2.85 WorkstationName=WKST-004 TargetServerName=WKST-004 Status=Success
+2026-02-20 13:45:24 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.2.38 WorkstationName=WKST-007 TargetServerName=WKST-007 Status=Success
+2026-02-20 13:51:29 EventCode=4624 LogonType=2 AccountName=chidi.nwosu SourceIP=10.10.1.42 WorkstationName=WKST-014 TargetServerName=WKST-014 Status=Success
+2026-02-20 13:52:25 EventCode=4634 LogonType=2 AccountName=tunde.afolabi WorkstationName=WKST-006 Status=Success
+2026-02-20 13:56:16 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.5.61 WorkstationName=WKST-001 TargetServerName=WKST-001 Status=Success
+2026-02-20 13:56:42 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-019 Status=Success
+2026-02-20 13:58:50 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.2.56 WorkstationName=WKST-006 TargetServerName=WKST-006 Status=Success
+2026-02-20 14:08:20 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.3.16 WorkstationName=WKST-026 TargetServerName=WKST-026 Status=Success
+2026-02-20 14:10:10 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-001 Status=Success
+2026-02-20 14:11:56 EventCode=4624 LogonType=2 AccountName=emeka.eze SourceIP=10.10.1.89 WorkstationName=WKST-026 TargetServerName=WKST-026 Status=Success
+2026-02-20 14:18:19 EventCode=4624 LogonType=2 AccountName=kemi.lawal SourceIP=10.10.1.92 WorkstationName=WKST-011 TargetServerName=WKST-011 Status=Success
+2026-02-20 14:20:06 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-025 Status=Success
+2026-02-20 14:22:22 EventCode=4624 LogonType=2 AccountName=chidi.nwosu SourceIP=10.10.5.53 WorkstationName=WKST-017 TargetServerName=WKST-017 Status=Success
+2026-02-20 14:22:53 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-007 Status=Success
+2026-02-20 14:25:04 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-013 Status=Success
+2026-02-20 14:27:57 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.3.15 WorkstationName=WKST-030 TargetServerName=WKST-030 Status=Success
+2026-02-20 14:30:21 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-006 Status=Success
+2026-02-20 14:31:04 EventCode=4634 LogonType=2 AccountName=emeka.eze WorkstationName=WKST-026 Status=Success
+2026-02-20 14:32:11 EventCode=4634 LogonType=2 AccountName=segun.bello WorkstationName=WKST-016 Status=Success
+2026-02-20 14:33:18 EventCode=4634 LogonType=2 AccountName=adaobi.okafor WorkstationName=WKST-017 Status=Success
+2026-02-20 14:37:31 EventCode=4624 LogonType=2 AccountName=kemi.lawal SourceIP=10.10.2.41 WorkstationName=WKST-030 TargetServerName=WKST-030 Status=Success
+2026-02-20 14:39:22 EventCode=4634 LogonType=2 AccountName=kemi.lawal WorkstationName=WKST-003 Status=Success
+2026-02-20 14:44:46 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.5.17 WorkstationName=WKST-018 TargetServerName=WKST-018 Status=Success
+2026-02-20 14:49:15 EventCode=4634 LogonType=2 AccountName=emeka.eze WorkstationName=WKST-012 Status=Success
+2026-02-20 14:50:43 EventCode=4624 LogonType=2 AccountName=emeka.eze SourceIP=10.10.3.75 WorkstationName=WKST-012 TargetServerName=WKST-012 Status=Success
+2026-02-20 14:58:58 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.3.97 WorkstationName=WKST-007 TargetServerName=WKST-007 Status=Success
+2026-02-20 15:00:54 EventCode=4634 LogonType=2 AccountName=adaobi.okafor WorkstationName=WKST-007 Status=Success
+2026-02-20 15:02:22 EventCode=4634 LogonType=2 AccountName=adaobi.okafor WorkstationName=WKST-028 Status=Success
+2026-02-20 15:02:36 EventCode=4624 LogonType=2 AccountName=emeka.eze SourceIP=10.10.3.28 WorkstationName=WKST-017 TargetServerName=WKST-017 Status=Success
+2026-02-20 15:09:55 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.2.59 WorkstationName=WKST-027 TargetServerName=WKST-027 Status=Success
+2026-02-20 15:12:47 EventCode=4634 LogonType=2 AccountName=kemi.lawal WorkstationName=WKST-011 Status=Success
+2026-02-20 15:15:39 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-008 Status=Success
+2026-02-20 15:17:17 EventCode=4634 LogonType=2 AccountName=emeka.eze WorkstationName=WKST-013 Status=Success
+2026-02-20 15:18:26 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.4.65 WorkstationName=WKST-004 TargetServerName=WKST-004 Status=Success
+2026-02-20 15:21:30 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.3.78 WorkstationName=WKST-024 TargetServerName=WKST-024 Status=Success
+2026-02-20 15:23:46 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.1.31 WorkstationName=WKST-016 TargetServerName=WKST-016 Status=Success
+2026-02-20 15:30:13 EventCode=4634 LogonType=2 AccountName=chidi.nwosu WorkstationName=WKST-017 Status=Success
+2026-02-20 15:32:46 EventCode=4634 LogonType=2 AccountName=emeka.eze WorkstationName=WKST-017 Status=Success
+2026-02-20 15:33:40 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.5.25 WorkstationName=WKST-017 TargetServerName=WKST-017 Status=Success
+2026-02-20 15:36:01 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-026 Status=Success
+2026-02-20 15:38:36 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.1.98 WorkstationName=WKST-004 TargetServerName=WKST-004 Status=Success
+2026-02-20 15:38:45 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-001 Status=Success
+2026-02-20 15:42:49 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-030 Status=Success
+2026-02-20 15:44:47 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.1.42 WorkstationName=WKST-029 TargetServerName=WKST-029 Status=Success
+2026-02-20 15:48:36 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-007 Status=Success
+2026-02-20 15:51:38 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.1.14 WorkstationName=WKST-017 TargetServerName=WKST-017 Status=Success
+2026-02-20 15:52:15 EventCode=4634 LogonType=2 AccountName=emeka.eze WorkstationName=WKST-025 Status=Success
+2026-02-20 15:55:11 EventCode=4634 LogonType=2 AccountName=segun.bello WorkstationName=WKST-010 Status=Success
+2026-02-20 15:57:02 EventCode=4624 LogonType=2 AccountName=adaobi.okafor SourceIP=10.10.2.98 WorkstationName=WKST-002 TargetServerName=WKST-002 Status=Success
+2026-02-20 15:57:51 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-018 Status=Success
+2026-02-20 16:00:32 EventCode=4624 LogonType=2 AccountName=tunde.afolabi SourceIP=10.10.1.48 WorkstationName=WKST-005 TargetServerName=WKST-005 Status=Success
+2026-02-20 16:04:48 EventCode=4624 LogonType=2 AccountName=chidi.nwosu SourceIP=10.10.1.37 WorkstationName=WKST-003 TargetServerName=WKST-003 Status=Success
+2026-02-20 16:08:14 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-001 Status=Success
+2026-02-20 16:09:35 EventCode=4624 LogonType=2 AccountName=emeka.eze SourceIP=10.10.3.88 WorkstationName=WKST-013 TargetServerName=WKST-013 Status=Success
+2026-02-20 16:09:41 EventCode=4634 LogonType=2 AccountName=kemi.lawal WorkstationName=WKST-030 Status=Success
+2026-02-20 16:17:49 EventCode=4624 LogonType=2 AccountName=ngozi.ibrahim SourceIP=10.10.1.55 WorkstationName=WKST-009 TargetServerName=WKST-009 Status=Success
+2026-02-20 16:19:53 EventCode=4624 LogonType=2 AccountName=segun.bello SourceIP=10.10.1.57 WorkstationName=WKST-004 TargetServerName=WKST-004 Status=Success
+2026-02-20 16:22:59 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.4.86 WorkstationName=WKST-026 TargetServerName=WKST-026 Status=Success
+2026-02-20 16:23:02 EventCode=4634 LogonType=2 AccountName=chidi.nwosu WorkstationName=WKST-017 Status=Success
+2026-02-20 16:28:08 EventCode=4634 LogonType=2 AccountName=tunde.afolabi WorkstationName=WKST-022 Status=Success
+2026-02-20 16:28:12 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-006 Status=Success
+2026-02-20 16:28:18 EventCode=4624 LogonType=2 AccountName=segun.bello SourceIP=10.10.2.35 WorkstationName=WKST-020 TargetServerName=WKST-020 Status=Success
+2026-02-20 16:34:25 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.4.54 WorkstationName=WKST-024 TargetServerName=WKST-024 Status=Success
+2026-02-20 16:40:24 EventCode=4624 LogonType=2 AccountName=chidi.nwosu SourceIP=10.10.1.96 WorkstationName=WKST-005 TargetServerName=WKST-005 Status=Success
+2026-02-20 16:40:37 EventCode=4634 LogonType=2 AccountName=adaobi.okafor WorkstationName=WKST-020 Status=Success
+2026-02-20 16:45:39 EventCode=4624 LogonType=2 AccountName=kemi.lawal SourceIP=10.10.2.34 WorkstationName=WKST-013 TargetServerName=WKST-013 Status=Success
+2026-02-20 16:51:04 EventCode=4624 LogonType=2 AccountName=chidi.nwosu SourceIP=10.10.1.33 WorkstationName=WKST-015 TargetServerName=WKST-015 Status=Success
+2026-02-20 16:56:49 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.5.73 WorkstationName=WKST-005 TargetServerName=WKST-005 Status=Success
+2026-02-20 16:59:19 EventCode=4624 LogonType=2 AccountName=segun.bello SourceIP=10.10.3.36 WorkstationName=WKST-003 TargetServerName=WKST-003 Status=Success
+2026-02-20 17:03:15 EventCode=4624 LogonType=2 AccountName=amaka.obi SourceIP=10.10.5.41 WorkstationName=WKST-020 TargetServerName=WKST-020 Status=Success
+2026-02-20 17:07:50 EventCode=4624 LogonType=2 AccountName=tunde.afolabi SourceIP=10.10.3.29 WorkstationName=WKST-022 TargetServerName=WKST-022 Status=Success
+2026-02-20 17:14:20 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-009 Status=Success
+2026-02-20 17:15:16 EventCode=4624 LogonType=2 AccountName=kemi.lawal SourceIP=10.10.1.42 WorkstationName=WKST-022 TargetServerName=WKST-022 Status=Success
+2026-02-20 17:15:38 EventCode=4634 LogonType=2 AccountName=ngozi.ibrahim WorkstationName=WKST-029 Status=Success
+2026-02-20 17:23:41 EventCode=4624 LogonType=2 AccountName=kemi.lawal SourceIP=10.10.2.60 WorkstationName=WKST-011 TargetServerName=WKST-011 Status=Success
+2026-02-20 17:29:39 EventCode=4624 LogonType=2 AccountName=ifeanyi.nduka SourceIP=10.10.3.39 WorkstationName=WKST-004 TargetServerName=WKST-004 Status=Success
+2026-02-20 17:30:49 EventCode=4634 LogonType=2 AccountName=chidi.nwosu WorkstationName=WKST-014 Status=Success
+2026-02-20 17:33:40 EventCode=4624 LogonType=2 AccountName=funke.adeyemi SourceIP=10.10.4.58 WorkstationName=WKST-021 TargetServerName=WKST-021 Status=Success
+2026-02-20 17:38:06 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-004 Status=Success
+2026-02-20 17:38:15 EventCode=4624 LogonType=2 AccountName=chidi.nwosu SourceIP=10.10.1.14 WorkstationName=WKST-023 TargetServerName=WKST-023 Status=Success
+2026-02-20 17:42:13 EventCode=4624 LogonType=2 AccountName=chidi.nwosu SourceIP=10.10.3.54 WorkstationName=WKST-007 TargetServerName=WKST-007 Status=Success
+2026-02-20 17:43:54 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-016 Status=Success
+2026-02-20 17:45:31 EventCode=4634 LogonType=2 AccountName=kemi.lawal WorkstationName=WKST-022 Status=Success
+2026-02-20 17:45:49 EventCode=4634 LogonType=2 AccountName=tunde.afolabi WorkstationName=WKST-022 Status=Success
+2026-02-20 17:47:26 EventCode=4624 LogonType=2 AccountName=adaobi.okafor SourceIP=10.10.4.86 WorkstationName=WKST-008 TargetServerName=WKST-008 Status=Success
+2026-02-20 17:53:26 EventCode=4624 LogonType=2 AccountName=kemi.lawal SourceIP=10.10.1.65 WorkstationName=WKST-005 TargetServerName=WKST-005 Status=Success
+2026-02-20 17:56:03 EventCode=4624 LogonType=2 AccountName=tunde.afolabi SourceIP=10.10.1.97 WorkstationName=WKST-014 TargetServerName=WKST-014 Status=Success
+2026-02-20 17:56:11 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-027 Status=Success
+2026-02-20 18:02:01 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-005 Status=Success
+2026-02-20 18:06:05 EventCode=4634 LogonType=2 AccountName=emeka.eze WorkstationName=WKST-026 Status=Success
+2026-02-20 18:06:25 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-017 Status=Success
+2026-02-20 18:11:51 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-021 Status=Success
+2026-02-20 18:15:43 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-004 Status=Success
+2026-02-20 18:16:49 EventCode=4634 LogonType=2 AccountName=kemi.lawal WorkstationName=WKST-013 Status=Success
+2026-02-20 18:24:58 EventCode=4634 LogonType=2 AccountName=kemi.lawal WorkstationName=WKST-005 Status=Success
+2026-02-20 18:25:10 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-020 Status=Success
+2026-02-20 18:28:58 EventCode=4634 LogonType=2 AccountName=adaobi.okafor WorkstationName=WKST-002 Status=Success
+2026-02-20 18:30:40 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-004 Status=Success
+2026-02-20 18:35:50 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-024 Status=Success
+2026-02-20 18:43:40 EventCode=4634 LogonType=2 AccountName=tunde.afolabi WorkstationName=WKST-005 Status=Success
+2026-02-20 18:45:37 EventCode=4634 LogonType=2 AccountName=emeka.eze WorkstationName=WKST-012 Status=Success
+2026-02-20 18:51:07 EventCode=4634 LogonType=2 AccountName=chidi.nwosu WorkstationName=WKST-003 Status=Success
+2026-02-20 18:57:43 EventCode=4634 LogonType=2 AccountName=chidi.nwosu WorkstationName=WKST-015 Status=Success
+2026-02-20 19:08:06 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-017 Status=Success
+2026-02-20 19:09:09 EventCode=4634 LogonType=2 AccountName=segun.bello WorkstationName=WKST-003 Status=Success
+2026-02-20 19:19:35 EventCode=4634 LogonType=2 AccountName=funke.adeyemi WorkstationName=WKST-004 Status=Success
+2026-02-20 19:26:14 EventCode=4634 LogonType=2 AccountName=amaka.obi WorkstationName=WKST-026 Status=Success
+2026-02-20 19:36:42 EventCode=4634 LogonType=2 AccountName=emeka.eze WorkstationName=WKST-013 Status=Success
+2026-02-20 19:40:57 EventCode=4634 LogonType=2 AccountName=segun.bello WorkstationName=WKST-004 Status=Success
+2026-02-20 19:54:32 EventCode=4634 LogonType=2 AccountName=segun.bello WorkstationName=WKST-020 Status=Success
+2026-02-20 20:11:51 EventCode=4634 LogonType=2 AccountName=chidi.nwosu WorkstationName=WKST-005 Status=Success
+2026-02-20 20:14:01 EventCode=4634 LogonType=2 AccountName=ifeanyi.nduka WorkstationName=WKST-024 Status=Success
+2026-02-20 20:25:31 EventCode=4634 LogonType=2 AccountName=kemi.lawal WorkstationName=WKST-011 Status=Success
+2026-02-20 20:54:55 EventCode=4634 LogonType=2 AccountName=chidi.nwosu WorkstationName=WKST-007 Status=Success
+2026-02-20 21:14:49 EventCode=4634 LogonType=2 AccountName=tunde.afolabi WorkstationName=WKST-014 Status=Success
+2026-02-20 21:19:59 EventCode=4634 LogonType=2 AccountName=adaobi.okafor WorkstationName=WKST-008 Status=Success
+2026-02-20 21:22:46 EventCode=4634 LogonType=2 AccountName=chidi.nwosu WorkstationName=WKST-023 Status=Success
+2026-02-20 23:18:01 EventCode=4648 AccountName=svc_audit SourceIP=197.188.3.210 WorkstationName=WEBSVR03 TargetServerName=WEBSVR03 LogonType=8 Status=Success
+2026-02-20 23:18:04 EventCode=4672 AccountName=svc_audit WorkstationName=WEBSVR03 Privileges=SeBackupPrivilege SeRestorePrivilege Status=Success
+2026-02-20 23:20:17 EventCode=4624 LogonType=3 AccountName=svc_audit SourceIP=10.10.3.33 WorkstationName=WEBSVR03 TargetServerName=TXNSVR02 Status=Success
+2026-02-20 23:20:24 EventCode=5140 AccountName=svc_audit SourceIP=10.10.3.33 ShareName=\\TXNSVR02\ADMIN$ WorkstationName=TXNSVR02 Status=Success
+2026-02-20 23:23:56 EventCode=4688 AccountName=svc_audit NewProcessName=C:\Windows\System32\cmd.exe ParentProcess=services.exe HostName=TXNSVR02 Status=Success
+2026-02-20 23:24:04 EventCode=4688 AccountName=svc_audit NewProcessName=C:\Python310\python.exe CommandLine=python.exe C:\Scripts\bulk_transfer.py --batch overnight_batch_20260220.csv --execute ParentProcess=cmd.exe HostName=TXNSVR02 Status=Success
+2026-02-21 00:53:21 EventCode=4689 AccountName=svc_audit ProcessName=C:\Python310\python.exe HostName=TXNSVR02 ExitCode=0x0 Status=Success
+2026-02-21 00:55:55 EventCode=4634 LogonType=3 AccountName=svc_audit WorkstationName=TXNSVR02 Status=Success

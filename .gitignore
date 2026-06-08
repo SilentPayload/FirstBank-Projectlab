@@ -1,0 +1,33 @@
+# Generated log artifacts — created at runtime per-student, never committed
+logs/*.log
+logs/*.csv
+logs/*.json
+# keep the placeholder so the directory is tracked
+!logs/.gitkeep
+
+# Student environment — contains seed and password
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Docker volumes
+.docker/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Generated reports from test runs
+instructor/reference_report*.txt
+student/incident_report*.txt
+logs/
+__pycache__/
+*.pyc
+.env

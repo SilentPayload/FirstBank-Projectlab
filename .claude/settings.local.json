@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp logs/web_access.log /tmp/web_access_1.log)",
+      "Bash(STUDENT_SEED=12345 OUTPUT_DIR=./logs python data-generator/generate_logs.py)",
+      "Read(//tmp/**)",
+      "Bash(STUDENT_SEED=99999 OUTPUT_DIR=/tmp/logs99999 python data-generator/generate_logs.py)",
+      "Bash(python3 -c \"import sys,json; m=json.load\\(sys.stdin\\); print\\('attacker_ip:', m['attacker_ip'], '| entry_point:', m['entry_point_host']\\)\")",
+      "Bash(grep -v \"^$\")",
+      "Bash(python *)",
+      "Bash(python3 *)",
+      "Bash(git -C /home/silentpayload/early-code/banking-soc-project status)"
+    ]
+  }
+}

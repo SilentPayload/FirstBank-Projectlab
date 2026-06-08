@@ -1,0 +1,11 @@
+{
+  "seed": 12345,
+  "scenario_date": "2026-02-20",
+  "attack_window": "2026-02-20 23:00 \u2013 2026-02-21 01:00 WAT",
+  "attacker_ip": "197.188.3.210",
+  "entry_point_host": "10.10.3.33",
+  "entry_point_hostname": "WEBSVR03",
+  "txn_server_host": "10.10.7.27",
+  "txn_server_hostname": "TXNSVR02",
+  "service_account": "svc_audit"
+}
