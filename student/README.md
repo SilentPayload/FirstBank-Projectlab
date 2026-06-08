@@ -66,57 +66,111 @@ Your SOC team has been tasked with determining:
 
 ## What You Will Need
 
-Before you begin, make sure you have the following installed on your machine:
-
 | Tool | Minimum Version | Purpose |
 |------|----------------|---------|
-| Docker Desktop | 4.x or newer | Runs Splunk and the log generator in containers |
+| Docker Engine | 24.x or newer | Runs Splunk and the log generator in containers |
+| Docker Compose | 2.x or newer | Orchestrates the containers |
 | Python | 3.10 or newer | Runs your analysis script in Phase 2 |
 | Git | Any recent version | Clones the repository |
-| A web browser | Chrome, Firefox, Edge | Access the Splunk web interface |
+| A web browser | Firefox or Chromium | Access the Splunk web interface |
 
-**RAM requirement:** Docker needs at least **4 GB of RAM** allocated to it.
+**RAM requirement:** Docker needs at least **4 GB of RAM** available.
 On machines with less than 8 GB total RAM, Splunk may be slow to start.
 
 ---
 
 ## Step 1 - Install Prerequisites
 
-### Docker Desktop
+Open a terminal. All commands below are run as your regular user unless `sudo` is shown.
 
-1. Go to [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
-2. Download the installer for your operating system (Windows, Mac, or Linux)
-3. Run the installer and follow the on-screen steps
-4. Once installed, open Docker Desktop and wait for it to say **"Engine running"** in the bottom left
+### Docker Engine and Docker Compose
 
-**Set Docker RAM allocation (important):**
-- Open Docker Desktop
-- Click the gear icon (Settings) in the top right
-- Go to **Resources**
-- Set **Memory** to at least **4 GB**
-- Click **Apply and restart**
+**Debian / Ubuntu / Kali:**
+
+```bash
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg
+
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/debian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+> If you are on **Ubuntu** replace `debian` with `ubuntu` in the URL above.
+> If you are on **Kali**, the Debian instructions above work as-is.
+
+**Fedora / RHEL / Rocky:**
+
+```bash
+sudo dnf install -y dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker
+```
+
+**Add your user to the docker group** (so you can run docker without sudo):
+
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+Verify Docker is working:
+
+```bash
+docker --version
+docker compose version
+```
+
+You should see version numbers for both. If `docker compose version` fails, your system may have the older standalone `docker-compose` binary - in that case replace `docker compose` with `docker-compose` everywhere in this guide.
 
 ### Python 3.10+
 
-- **Windows:** Download from [https://www.python.org/downloads/](https://www.python.org/downloads/) - tick "Add Python to PATH" during install
-- **Mac:** Run `brew install python3` or download from python.org
-- **Linux:** Run `sudo apt install python3` or `sudo dnf install python3`
+**Debian / Ubuntu / Kali:**
 
-Verify it installed correctly:
 ```bash
-python --version
-# or on some systems:
+sudo apt install -y python3 python3-pip
+```
+
+**Fedora / RHEL:**
+
+```bash
+sudo dnf install -y python3
+```
+
+Verify:
+
+```bash
 python3 --version
 ```
+
 You should see `Python 3.10.x` or higher.
 
 ### Git
 
-- **Windows:** Download from [https://git-scm.com/download/win](https://git-scm.com/download/win)
-- **Mac:** Run `xcode-select --install` in Terminal, or `brew install git`
-- **Linux:** Run `sudo apt install git` or `sudo dnf install git`
+**Debian / Ubuntu / Kali:**
+
+```bash
+sudo apt install -y git
+```
+
+**Fedora / RHEL:**
+
+```bash
+sudo dnf install -y git
+```
 
 Verify:
+
 ```bash
 git --version
 ```
@@ -125,32 +179,38 @@ git --version
 
 ## Step 2 - Clone the Repository
 
-Open a terminal (Command Prompt or PowerShell on Windows, Terminal on Mac/Linux) and run:
+In your terminal, navigate to wherever you keep your coursework, then clone:
 
 ```bash
 git clone https://github.com/SilentPayload/FirstBank-Projectlab.git
 cd FirstBank-Projectlab
 ```
 
-You should now be inside the project folder. Run `ls` (Mac/Linux) or `dir` (Windows) to confirm you can see files like `docker-compose.yml`, `.env.example`, and a `student/` folder.
+Confirm the files are there:
+
+```bash
+ls
+```
+
+You should see `docker-compose.yml`, `.env.example`, `student/`, `data-generator/`, and `splunk/`.
 
 ---
 
 ## Step 3 - Configure Your Environment
 
-The lab uses a `.env` file to store your personal settings. You need to create this file from the provided example.
+The lab uses a `.env` file to hold your personal settings. Create it from the example:
 
-**On Mac/Linux:**
 ```bash
 cp .env.example .env
 ```
 
-**On Windows (Command Prompt):**
-```cmd
-copy .env.example .env
+Open `.env` in a text editor:
+
+```bash
+nano .env
 ```
 
-Now open `.env` in any text editor (Notepad, VS Code, nano, etc.). It looks like this:
+It looks like this:
 
 ```
 STUDENT_SEED=12345
@@ -160,10 +220,10 @@ SPLUNK_PASSWORD=Training123!
 Make two changes:
 
 1. Replace `12345` with **the seed number your instructor gave you**
-2. You can keep `Training123!` as your Splunk password or choose your own
-   (it must be at least 8 characters with uppercase, lowercase, a number, and a special character)
+2. You can keep `Training123!` as your Splunk password or choose your own.
+   It must be at least 8 characters and contain uppercase, lowercase, a digit, and a special character.
 
-Save and close the file.
+Save and exit (`Ctrl+O` then `Enter` then `Ctrl+X` in nano).
 
 > **Never share your `.env` file.** It contains your unique seed and is not tracked by Git.
 
@@ -171,35 +231,45 @@ Save and close the file.
 
 ## Step 4 - Start the Lab
 
-Make sure Docker Desktop is running (you should see the Docker whale icon in your taskbar/menu bar and it should say "Engine running").
+Make sure the Docker service is running:
 
-Then run:
+```bash
+sudo systemctl status docker
+```
+
+If it says `inactive`, start it:
+
+```bash
+sudo systemctl start docker
+```
+
+Then launch the lab from the project root:
 
 ```bash
 docker compose up --build
 ```
 
-This command does two things in order:
+This does two things in order:
 
 1. **Builds and runs the log generator** - creates your unique synthetic log files based on your seed
-2. **Starts Splunk Enterprise** - a real SIEM that indexes and searches your logs
+2. **Starts Splunk Enterprise** - a full SIEM that indexes and searches your logs
 
-You will see a lot of output scroll past. This is normal. Wait until you see something like:
+You will see a lot of output scroll past. This is normal. Wait until you see:
 
 ```
 splunk  | Waiting for Splunk to be ready...
 splunk  | Splunk is ready!
 ```
 
-**Splunk takes approximately 90 seconds to fully start.** On slower machines or machines with less RAM, it may take up to 3-4 minutes. Do not close the terminal - leave it running in the background.
+**Splunk takes approximately 90 seconds to fully start.** On slower machines or machines with less than 8 GB RAM, it may take up to 3-4 minutes. Leave the terminal running - do not close it.
 
-> If Docker says something like "Cannot connect to the Docker daemon", Docker Desktop is not running. Open it and wait for the engine to start, then try again.
+To run subsequent commands while the lab is running, open a second terminal tab (`Ctrl+Shift+T` in most Linux terminals).
 
 ---
 
 ## Step 5 - Log In to Splunk
 
-Once Splunk is ready, open your web browser and go to:
+Once Splunk is ready, open your browser and go to:
 
 ```
 http://localhost:8000
@@ -210,17 +280,17 @@ You will see the Splunk login page.
 - **Username:** `admin`
 - **Password:** whatever you set as `SPLUNK_PASSWORD` in your `.env` file (default: `Training123!`)
 
-After logging in, you will land on the Splunk home page. To run searches:
+After logging in, you land on the Splunk home page. To run searches:
 
-1. Click **Search and Reporting** in the left sidebar (or the Apps menu at the top)
+1. Click **Search and Reporting** in the left sidebar (or from the Apps menu at the top)
 2. You will see a large search bar at the top - this is where you type SPL queries
-3. Make sure the **time range** (top right of the search bar) is set to **All time** for this exercise
+3. Set the **time range picker** (top right of the search bar) to **All time** for this exercise
 
 ---
 
 ## Step 6 - Verify Log Ingestion
 
-Before starting the investigation, confirm that all three log sources are indexed. In the Splunk search bar, type:
+Before starting the investigation, confirm that all three log sources are indexed. In the Splunk search bar type:
 
 ```spl
 index=banking_soc | stats count by sourcetype
@@ -236,21 +306,19 @@ You should see a table with three rows:
 | banking_transaction | (some number) |
 | windows_auth_training | (some number) |
 
-If any sourcetype is missing, wait 30 seconds and run the search again. Splunk's monitor runs every 15 seconds. If they are still missing after 2 minutes, see the [Troubleshooting](#troubleshooting) section at the bottom of this file.
+If any sourcetype is missing, wait 30 seconds and run the search again. Splunk's file monitor polls every 15 seconds. If they are still missing after 2 minutes, see the [Troubleshooting](#troubleshooting) section.
 
 ---
 
 ## Phase 1 - Splunk Investigation (40 points)
 
-In this phase you will use Splunk's Search Processing Language (SPL) to investigate the incident across all three log sources.
+In this phase you use Splunk's Search Processing Language (SPL) to investigate the incident across all three log sources.
 
 **For each task:**
-- Run the query in Splunk
+- Paste the query into the Splunk search bar and run it
 - Read through the results carefully
-- Take a **screenshot** of the results (you will need it for your Phase 3 report)
-- Note down your answers
-
-To take a screenshot showing your query and results together, make sure the search bar is visible in the screenshot.
+- Take a **screenshot** showing both the query and the results table (you will submit these)
+- Write down your answers
 
 ---
 
@@ -261,10 +329,8 @@ The attacker used an automated SQL injection tool to brute-force the login page 
 **Find answers to:**
 - What is the attacker's source IP address?
 - What User-Agent string identifies the automated attack tool?
-- What is the exact timestamp of the first successful login (HTTP 200) by the attacker after the brute-force?
+- What is the exact timestamp of the first successful login (HTTP 200) by the attacker?
 - Which request URI contains a visible SQL injection payload?
-
-Run this query to get started:
 
 ```spl
 index=banking_soc sourcetype=access_combined
@@ -274,24 +340,25 @@ index=banking_soc sourcetype=access_combined
 ```
 
 **Reading the results:**
-- The `src_ip` column is where requests came from
-- The `status` column is the HTTP response code - `401` means failed login, `200` means success
-- The `useragent` column identifies the software making the request
-- The `uri` column shows the exact URL path requested - look for anything that contains `%27` (URL-encoded single quote), `OR`, `1=1`, or similar SQL syntax
+
+| Column | What it means |
+|--------|--------------|
+| `src_ip` | IP address the request came from |
+| `status` | HTTP response code - `401` is a failed login, `200` is success |
+| `useragent` | The software that made the request - automated tools have distinctive strings |
+| `uri` | The exact URL path - look for `%27` (URL-encoded single quote `'`), `OR`, `1=1`, or `--` which are SQL injection markers |
 
 ---
 
 ### Task 1.2 - Trace the Lateral Movement (10 pts)
 
-After gaining initial access to the web server, the attacker hijacked a service account and moved laterally to the transaction processing server.
+After gaining access to the web server, the attacker hijacked a service account and moved laterally to the transaction processing server.
 
 **Find answers to:**
 - Which service account did the attacker hijack? (format: `svc_something`)
-- From which host did the lateral movement originate? (this is the web server IP)
-- To which host did the attacker pivot? (this is the transaction server hostname)
+- From which host did the lateral movement originate?
+- To which host did the attacker pivot?
 - Which Windows Event IDs mark this activity?
-
-Run this query:
 
 ```spl
 index=banking_soc sourcetype=windows_auth_training
@@ -304,10 +371,10 @@ index=banking_soc sourcetype=windows_auth_training
 
 | EventCode | What it means |
 |-----------|--------------|
-| 4648 | A logon was attempted using explicit credentials - attacker used a service account to authenticate |
-| 4624 | Successful logon - `LogonType=3` means a network logon (remote connection), which indicates lateral movement |
-| 4672 | Special privileges assigned to a new logon - indicates the account has elevated rights |
-| 5140 | A network share was accessed - attacker connecting to a shared folder on the target server |
+| 4648 | Logon attempted using explicit credentials - attacker authenticated using the hijacked service account |
+| 4624 | Successful logon - when `LogonType=3` this is a network logon, meaning a remote connection (lateral movement) |
+| 4672 | Special privileges assigned to a new logon - the account has elevated rights |
+| 5140 | Network share accessed - attacker accessing a shared folder on the target server |
 
 Look for events where `AccountName` starts with `svc_` and where `SourceIP` matches the web server IP you found in Task 1.1.
 
@@ -315,14 +382,12 @@ Look for events where `AccountName` starts with `svc_` and where `SourceIP` matc
 
 ### Task 1.3 - Find the Transfer Script Execution (10 pts)
 
-Once on the transaction server, the attacker executed a Python script to automate the fraudulent wire transfers.
+Once on the transaction server, the attacker executed a Python script to automate the fraudulent transfers.
 
 **Find answers to:**
-- What is the full command line of the script that was executed?
-- What is Event ID 4688 and what does it capture?
+- What is the full command line of the executed script?
+- What does EventCode 4688 capture?
 - What is the name of the batch file passed to the script?
-
-Run this query:
 
 ```spl
 index=banking_soc sourcetype=windows_auth_training EventCode=4688
@@ -331,10 +396,13 @@ index=banking_soc sourcetype=windows_auth_training EventCode=4688
 ```
 
 **What to look for:**
-- `EventCode=4688` is a Windows process creation event - it is logged every time a new process starts
-- `NewProcessName` shows the executable that was launched
-- `CommandLine` shows the full command including arguments - you are looking for a line that mentions `bulk_transfer.py` and a `.csv` batch file
-- `AccountName` should match the service account you identified in Task 1.2
+
+| Column | What it means |
+|--------|--------------|
+| `EventCode=4688` | Windows process creation event - logged every time a new process starts |
+| `NewProcessName` | The executable that was launched |
+| `CommandLine` | Full command including all arguments - look for `bulk_transfer.py` and a `.csv` filename |
+| `AccountName` | Should match the service account from Task 1.2 |
 
 ---
 
@@ -343,13 +411,11 @@ index=banking_soc sourcetype=windows_auth_training EventCode=4688
 The attacker's script initiated a series of wire transfers from victim accounts to attacker-controlled accounts.
 
 **Find answers to:**
-- List all fraudulent transaction IDs (TxnID)
-- What are the victim account numbers (FromAccount)?
-- What are the attacker's receiving account numbers (ToAccount)?
-- What is the total NGN amount transferred?
-- When did the first and last fraudulent transfers occur?
-
-Run this query:
+- All fraudulent transaction IDs (TxnID)
+- Victim account numbers (FromAccount)
+- Attacker receiving account numbers (ToAccount)
+- Total NGN amount transferred
+- Timestamps of the first and last fraudulent transfer
 
 ```spl
 index=banking_soc sourcetype=banking_transaction
@@ -358,9 +424,9 @@ index=banking_soc sourcetype=banking_transaction
 | sort _time
 ```
 
-**Why this works:** Legitimate transactions are initiated by human users (e.g., `adaobi.okafor`). The fraudulent ones were initiated by the service account the attacker hijacked, so filtering for `InitiatedBy` values that start with `svc_` isolates the fraudulent transfers.
+**Why this works:** Legitimate transactions are initiated by named human users (e.g. `adaobi.okafor`). The fraudulent ones were initiated by the hijacked service account, so filtering for `InitiatedBy` values starting with `svc_` isolates only the attacker's transactions.
 
-To calculate the total amount, add this line to the query:
+To calculate the total amount transferred:
 
 ```spl
 index=banking_soc sourcetype=banking_transaction
@@ -372,9 +438,7 @@ index=banking_soc sourcetype=banking_transaction
 
 ### Task 1.5 - Reconstruct the Full Attack Timeline
 
-Combine all three sources into a single chronological timeline of attack activity. This gives you the complete picture of the incident from first probe to last fraudulent transfer.
-
-Run this query:
+Combine all three log sources into a single chronological timeline. This gives you the complete picture from the first probe to the last fraudulent transfer.
 
 ```spl
 index=banking_soc
@@ -396,48 +460,53 @@ index=banking_soc
 | sort _time
 ```
 
-**Export the results as a CSV file - you need this for Phase 2:**
+**Export as CSV - you need this for Phase 2:**
 
-1. After the search completes, look for the **Export** button above the results table (it may be under a small arrow or "..." menu)
-2. Click **Export** then select **CSV**
+1. After the search completes, click the **Export** button above the results table
+2. Select **CSV**
 3. Save the file as `splunk_export.csv`
-4. Move or copy this file into the `student/` folder (same folder as `analysis.py`)
+4. Copy it into the `student/` folder (same folder as `analysis.py`):
+
+```bash
+cp ~/Downloads/splunk_export.csv student/splunk_export.csv
+```
 
 ---
 
 ## Phase 2 - Python Analysis (40 points)
 
-In this phase you will complete five Python functions in `student/analysis.py`. The script takes your Nessus scan data and Splunk export and produces a structured incident report.
+In this phase you complete five Python functions in `student/analysis.py`. The script reads your Nessus data and Splunk export and writes a structured incident report.
 
 ### Before You Start
 
-Open `student/analysis.py` in your code editor and read through the file. You will see:
-- Two data model classes at the top (`Vulnerability` and `SplunkEvent`) - read their docstrings
-- Five functions with `TODO` comments and `raise NotImplementedError(...)` - these are yours to implement
-- Helper functions at the bottom marked "do not modify" - you can use these
-- A `main()` function at the bottom marked "do not modify" - this calls all your functions
+Open `student/analysis.py` in your editor and read through the whole file first. You will find:
 
-Work through the tasks in order (Task 2.1 to 2.5) because each function's output is passed into the next.
+- Two data model classes (`Vulnerability` and `SplunkEvent`) at the top - read their docstrings to understand their fields
+- Five functions with `# TODO` and `raise NotImplementedError(...)` - these are yours to implement
+- Helper functions near the bottom marked "do not modify" - you can call these
+- A `main()` block at the bottom marked "do not modify" - this wires everything together
+
+Work through the tasks in order (2.1 through 2.5) because each function's output feeds into the next.
 
 ### Running the Script
 
-From inside the `student/` directory:
+From the project root:
 
 ```bash
 cd student
-python analysis.py \
+python3 analysis.py \
   --nessus  ../logs/nessus_scan.csv \
   --splunk  splunk_export.csv \
   --report  incident_report.txt
 ```
 
-On Windows use `python` instead of `python3`. If you get a `python: command not found` error, try `python3`.
+When a function is not yet implemented you will see:
 
-When a function is not yet implemented, you will see:
 ```
 NotImplementedError: parse_nessus_csv - implement me!
 ```
-This is expected. Implement the function, then run again. Once all five are done, the script will print a summary and write `incident_report.txt`.
+
+This is expected. Implement the function, save the file, and run again. Once all five functions are done the script prints a summary and writes `incident_report.txt`.
 
 ---
 
@@ -445,11 +514,7 @@ This is expected. Implement the function, then run again. Once all five are done
 
 **Goal:** Read `nessus_scan.csv` and return a list of `Vulnerability` objects.
 
-**How to approach it:**
-
 ```python
-import csv
-
 def parse_nessus_csv(filepath: str) -> list[Vulnerability]:
     results = []
     with open(filepath, newline="") as f:
@@ -474,7 +539,7 @@ def parse_nessus_csv(filepath: str) -> list[Vulnerability]:
     return results
 ```
 
-`csv.DictReader` reads each row as a dictionary where the keys are the column headers. The `Vulnerability` class constructor is already defined at the top of the file - just pass in the right values from the row.
+`csv.DictReader` reads each row as a dictionary where keys are the column headers. The `Vulnerability` class is already defined at the top of the file - just pass in the values from each row.
 
 ---
 
@@ -482,15 +547,12 @@ def parse_nessus_csv(filepath: str) -> list[Vulnerability]:
 
 **Goal:** Read `splunk_export.csv` and return a list of `SplunkEvent` objects sorted by timestamp.
 
-**How to approach it:**
-
 ```python
 def parse_splunk_export(filepath: str) -> list[SplunkEvent]:
     results = []
     with open(filepath, newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            # Parse the timestamp
             ts_str = row.get("_time", "")
             try:
                 ts = datetime.strptime(ts_str, "%Y-%m-%dT%H:%M:%S.%f%z")
@@ -498,29 +560,25 @@ def parse_splunk_export(filepath: str) -> list[SplunkEvent]:
                 try:
                     ts = datetime.strptime(ts_str, "%Y-%m-%d %H:%M:%S")
                 except ValueError:
-                    continue  # skip rows with unparseable timestamps
-
+                    continue
             event = SplunkEvent(
                 timestamp  = ts,
                 sourcetype = row.get("sourcetype", ""),
                 host       = row.get("host", ""),
                 raw        = row.get("_raw", ""),
-                fields     = dict(row),  # store the entire row as fields
+                fields     = dict(row),
             )
             results.append(event)
-
     return sorted(results, key=lambda e: e.timestamp)
 ```
 
-The `%z` in the format string handles timezone offsets like `+01:00`. `SplunkEvent.fields` should contain all columns from the CSV row - just pass `dict(row)` directly.
+The `%z` in the format string handles timezone offsets like `+01:00`. Pass `dict(row)` directly to `fields` to store all CSV columns.
 
 ---
 
 ### Task 2.3 - `score_risk()` (8 pts)
 
 **Goal:** Calculate a risk score between 0.0 and 100.0 for a single host based on its vulnerabilities.
-
-Use the formula already documented in the function's docstring:
 
 ```python
 def score_risk(host_vulns: list[Vulnerability]) -> float:
@@ -529,15 +587,15 @@ def score_risk(host_vulns: list[Vulnerability]) -> float:
 
     severity_weight = {"Critical": 4, "High": 3, "Medium": 2, "Low": 1, "None": 0}
 
-    weighted_cvss  = sum(v.cvss * severity_weight.get(v.risk, 0) for v in host_vulns)
-    total_weight   = sum(severity_weight.get(v.risk, 0) for v in host_vulns)
+    weighted_cvss = sum(v.cvss * severity_weight.get(v.risk, 0) for v in host_vulns)
+    total_weight  = sum(severity_weight.get(v.risk, 0) for v in host_vulns)
 
     if total_weight == 0:
         return 0.0
 
-    base_score      = (weighted_cvss / total_weight / 10.0) * 70
-    num_criticals   = sum(1 for v in host_vulns if v.risk == "Critical")
-    critical_bonus  = min(30, num_criticals * 10)
+    base_score     = (weighted_cvss / total_weight / 10.0) * 70
+    num_criticals  = sum(1 for v in host_vulns if v.risk == "Critical")
+    critical_bonus = min(30, num_criticals * 10)
 
     return round(min(100.0, base_score + critical_bonus), 1)
 ```
@@ -551,9 +609,7 @@ def score_risk(host_vulns: list[Vulnerability]) -> float:
 
 ### Task 2.4 - `flag_confirmed_compromise()` (8 pts)
 
-**Goal:** Return a sorted list of host IPs that appear in BOTH the Nessus data AND the Splunk attack events. These are hosts confirmed to be part of the attack path.
-
-**How to approach it:**
+**Goal:** Return a sorted list of host IPs that appear in BOTH the Nessus data AND the Splunk attack events.
 
 ```python
 def flag_confirmed_compromise(
@@ -561,21 +617,15 @@ def flag_confirmed_compromise(
     splunk_events: list[SplunkEvent],
 ) -> list[str]:
 
-    # All IPs known from the Nessus scan
-    nessus_ips = {v.host for v in nessus_data}
-
-    # Event codes that indicate attack activity on a host
+    nessus_ips   = {v.host for v in nessus_data}
     attack_codes = {"4624", "4648", "4672", "4688", "4689", "5140"}
 
-    # IPs seen in attack-relevant Splunk events
     seen_in_attack = set()
     for ev in splunk_events:
         if ev.sourcetype != "windows_auth_training":
             continue
         if ev.get("EventCode") not in attack_codes:
             continue
-        # SourceIP is the connecting host (the entry point IP appears here
-        # during lateral movement events)
         src = ev.get("SourceIP", "")
         if src in nessus_ips:
             seen_in_attack.add(src)
@@ -583,26 +633,26 @@ def flag_confirmed_compromise(
     return sorted(seen_in_attack)
 ```
 
-The entry-point web server IP will appear as `SourceIP` in the lateral movement event (EventCode 4624, LogonType 3) because the attacker connected *from* the web server *to* the transaction server. That SourceIP will also be in the Nessus data because it was scanned.
+The entry-point web server IP appears as `SourceIP` in the lateral movement event (EventCode 4624, LogonType 3) because the attacker connected *from* the web server *to* the transaction server. That same IP is in the Nessus data because it was scanned before the incident.
 
 ---
 
 ### Task 2.5 - `generate_report()` (8 pts)
 
-**Goal:** Write a plain-text incident report to a file with exactly six sections.
+**Goal:** Write a plain-text incident report with exactly six sections.
 
-The `findings` dictionary is already populated by `main()` and passed to your function. The keys are:
+The `findings` dictionary passed to your function contains:
 
-| Key | Type | Contains |
+| Key | Type | Contents |
 |-----|------|---------|
 | `entry_point` | str | IP of the web server where SQLi occurred |
 | `attacker_ip` | str | External IP of the attacker |
-| `attack_timeline` | list of (str, str) tuples | (timestamp, event description) pairs |
+| `attack_timeline` | list of (str, str) | (timestamp, event description) pairs |
 | `compromised_accounts` | list of str | Victim bank account numbers |
-| `host_scores` | dict of str to float | {host_ip: risk_score} for all scanned hosts |
+| `host_scores` | dict str to float | {host_ip: risk_score} for all scanned hosts |
 | `confirmed_hosts` | list of str | IPs confirmed as part of the attack path |
 
-Your report must contain these six section headings **exactly** (the auto-grader checks for them):
+Your report must contain these six headings **exactly** (the auto-grader checks for them):
 
 ```
 EXECUTIVE SUMMARY
@@ -613,7 +663,7 @@ CONFIRMED COMPROMISE HOSTS
 RECOMMENDATIONS
 ```
 
-Example structure:
+Example implementation:
 
 ```python
 def generate_report(findings: dict, output_path: str) -> None:
@@ -625,8 +675,8 @@ def generate_report(findings: dict, output_path: str) -> None:
 
     lines.append("EXECUTIVE SUMMARY")
     lines.append("-" * 40)
-    lines.append(f"Attacker IP   : {findings['attacker_ip']}")
-    lines.append(f"Entry Point   : {findings['entry_point']}")
+    lines.append(f"Attacker IP  : {findings['attacker_ip']}")
+    lines.append(f"Entry Point  : {findings['entry_point']}")
     lines.append("")
 
     lines.append("ATTACK TIMELINE")
@@ -657,7 +707,7 @@ def generate_report(findings: dict, output_path: str) -> None:
     lines.append("-" * 40)
     lines.append("  1. Immediately disable the compromised service account.")
     lines.append("  2. Patch the SQL injection vulnerability on the web server.")
-    lines.append("  3. Review all wire transfers initiated during the attack window.")
+    lines.append("  3. Review all wire transfers during the attack window.")
     lines.append("  4. Reset credentials for all affected accounts.")
     lines.append("  5. Deploy a Web Application Firewall (WAF).")
     lines.append("")
@@ -666,7 +716,7 @@ def generate_report(findings: dict, output_path: str) -> None:
         f.write("\n".join(lines))
 ```
 
-You can expand the content in each section - more detail is better for your Phase 3 submission.
+You can expand every section with more detail - more depth is better for your Phase 3 submission.
 
 ---
 
@@ -678,24 +728,24 @@ Submit a **15-20 page PDF report** (12pt font, 1-inch margins) addressed to a fi
 
 | Section | Points | What to include |
 |---------|--------|----------------|
-| Executive Summary | 4 | Non-technical overview. What happened, when, and the business impact. Write as if the reader has no technical background. |
-| Customer Impact | 4 | Which accounts were affected, total NGN value exposed, and what the consequences are for affected customers. |
-| Nigerian Regulatory Considerations | 6 | Which regulations were triggered and what FirstBank must do to comply. See the regulatory references below. |
-| Technical Remediation Recommendations | 6 | Specific, actionable steps to prevent a recurrence. Reference the vulnerabilities found in the Nessus scan. |
+| Executive Summary | 4 | Non-technical overview of what happened, when, and the business impact. Write as if the reader has no technical background. |
+| Customer Impact | 4 | Which accounts were affected, total NGN value exposed, and consequences for customers. |
+| Nigerian Regulatory Considerations | 6 | Which regulations apply and what FirstBank must do to comply. At least two references required (see below). |
+| Technical Remediation Recommendations | 6 | Specific, actionable steps to prevent a recurrence. Reference the vulnerabilities from the Nessus scan. |
 
 ### Regulatory References (at least two required)
 
-- **CBN Risk-Based Cybersecurity Framework (2022):** FirstBank must notify the CBN within 2 hours of detecting the incident. A root-cause analysis report is due within 5 business days.
+- **CBN Risk-Based Cybersecurity Framework (2022):** Notify the CBN within 2 hours of detecting the incident. Root-cause analysis report due within 5 business days.
 - **BOFIA 2020 Section 62:** Material cybersecurity incidents must be disclosed to the CBN Governor.
-- **Nigeria Data Protection Act (NDPA) 2023 Section 40:** The NDPC must be notified within 72 hours of confirming a data breach. Affected customers must also be notified without undue delay.
-- **PCI DSS v4.0:** If any payment card data was in scope, additional reporting and remediation obligations apply.
+- **Nigeria Data Protection Act (NDPA) 2023 Section 40:** Notify the NDPC within 72 hours of confirming a data breach. Notify affected customers without undue delay.
+- **PCI DSS v4.0:** If payment card data was in scope, additional reporting and remediation obligations apply.
 
 ### Bonus Points (10 pts)
 
-- **+5 pts:** Correctly identify all compromised customer account numbers (cross-checked against your seed)
-- **+5 pts:** Map at least three distinct attack steps to MITRE ATT&CK Enterprise TTPs with tactic, technique ID, and technique name
+- **+5 pts:** Correctly identify all compromised customer account numbers
+- **+5 pts:** Map at least three attack steps to MITRE ATT&CK Enterprise TTPs with tactic, technique ID, and technique name
 
-Example ATT&CK mappings to get you started:
+Example ATT&CK mappings:
 
 | Attack Step | Tactic | Technique |
 |-------------|--------|-----------|
@@ -708,95 +758,135 @@ Example ATT&CK mappings to get you started:
 
 ## Submitting Your Work
 
-Bundle the following four items into a single ZIP file named `<YourStudentID>_soc_lab.zip`:
+Bundle the following four items into a ZIP file named `<YourStudentID>_soc_lab.zip`:
 
 | File | Where to find it |
 |------|-----------------|
-| `incident_report.txt` | Generated by `analysis.py` in the `student/` folder |
+| `incident_report.txt` | Generated in the `student/` folder after running `analysis.py` |
 | `analysis.py` | Your completed version in the `student/` folder |
-| Splunk screenshots | One screenshot per Task 1.1 through 1.5 (5 screenshots minimum) |
+| Splunk screenshots | One screenshot per Task 1.1 through 1.5 (5 minimum) |
 | Phase 3 PDF report | Your written report |
 
-Submit the ZIP via the course portal.
+Create the ZIP from the terminal:
+
+```bash
+zip -r <YourStudentID>_soc_lab.zip \
+  student/incident_report.txt \
+  student/analysis.py \
+  screenshots/ \
+  report.pdf
+```
+
+Submit via the course portal.
 
 ---
 
 ## Troubleshooting
 
-### "Cannot connect to the Docker daemon"
-
-Docker Desktop is not running. Open it from your Applications or Start menu and wait until you see "Engine running" before trying again.
-
-### Splunk never starts / stays on "Waiting..."
-
-Check how much RAM Docker has. Open Docker Desktop, go to Settings → Resources → Memory, and make sure it is set to at least 4 GB.
-
-### Logs are not showing up in Splunk
-
-First check that the log generator ran successfully:
+### Docker daemon is not running
 
 ```bash
-docker compose ps
+sudo systemctl start docker
+sudo systemctl status docker
 ```
 
-The `log-generator` service should show `Exited (0)`. If it shows a non-zero exit code, check its output:
+If Docker starts but stops immediately, check its logs:
+
+```bash
+sudo journalctl -u docker --no-pager | tail -30
+```
+
+### Permission denied when running docker commands
+
+Add your user to the docker group and re-login:
+
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+### Splunk never starts or stays on "Waiting..."
+
+Check available memory - Splunk requires at least 2 GB of free RAM:
+
+```bash
+free -h
+```
+
+If memory is tight, close other applications and try again.
+
+### Log generator exited with an error
+
+Check what went wrong:
 
 ```bash
 docker compose logs log-generator
 ```
 
-A common cause is an incorrect `STUDENT_SEED` value in `.env` - make sure it is a plain integer with no spaces or quotes.
+Common cause: `STUDENT_SEED` in `.env` is not a plain integer. Open `.env` and make sure it looks like `STUDENT_SEED=1001` with no quotes or spaces.
 
-If the generator ran fine but logs are still missing from Splunk, restart everything:
+### Logs not showing up in Splunk after 2 minutes
+
+Check the generator completed successfully:
+
+```bash
+docker compose ps
+```
+
+The `log-generator` service should show `Exited (0)`. Then check Splunk's input monitoring:
+
+```bash
+docker compose logs splunk | grep -i "error\|warn\|monitor"
+```
+
+If nothing helps, wipe and restart:
 
 ```bash
 docker compose down -v
 docker compose up --build
 ```
 
-The `-v` flag removes the Docker volume so logs are regenerated fresh.
+The `-v` flag removes the Docker volume so logs are regenerated fresh from your seed.
 
-### Only two sourcetypes appear in Splunk (one is missing)
+### `python3: command not found`
 
-Wait an additional 30-60 seconds and re-run the verification query. Splunk's file monitor polls every 15 seconds. If the sourcetype is still missing after 2 minutes, run:
+Install Python:
 
 ```bash
-docker compose logs splunk | grep -i "error\|warn\|monitor"
+sudo apt install -y python3   # Debian/Ubuntu/Kali
+sudo dnf install -y python3   # Fedora/RHEL
 ```
-
-### "python: command not found"
-
-Try `python3` instead of `python`. On Windows, make sure you ticked "Add Python to PATH" during installation. If not, reinstall Python and tick that box.
 
 ### `ModuleNotFoundError` when running `analysis.py`
 
-The script uses only Python standard library modules (`csv`, `datetime`, `pathlib`, `argparse`, `json`). No `pip install` is needed. If you see this error, check that your Python version is 3.10 or higher:
+The script uses only the Python standard library - no `pip install` is needed. If you see this error, check your Python version:
 
 ```bash
-python --version
+python3 --version
 ```
+
+It must be 3.10 or higher.
 
 ### Splunk password forgotten
 
-Stop the Splunk container and reset the password:
-
 ```bash
-docker compose stop splunk
-docker compose run --rm splunk entrypoint.sh splunk edit user admin -password NewPass123! -auth admin:OldPassword
-docker compose start splunk
+docker compose exec splunk entrypoint.sh splunk edit user admin \
+  -password NewPass123! -auth admin:OldPassword
 ```
 
-Or destroy and recreate the Splunk container (your log volume is separate and will be preserved):
+Replace `OldPassword` with whatever you set in `.env`. If you cannot remember it at all:
 
 ```bash
 docker compose rm -f splunk
 docker compose up splunk -d
 ```
 
-### Getting updates from your instructor mid-exercise
+This recreates only the Splunk container. Your log volume is separate and will not be lost.
+
+### Getting updates mid-exercise
 
 ```bash
 git pull
 ```
 
-Your `.env` file and any code you have written will not be overwritten by a pull because they are not tracked by Git.
+Your `.env` and completed `analysis.py` are not tracked by Git and will not be overwritten.
