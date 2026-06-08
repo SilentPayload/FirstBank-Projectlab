@@ -18,7 +18,7 @@
 
 ## Scenario
 
-**"Online Banking System Compromise" — FirstBank Nigeria (simulated)**
+**"Online Banking System Compromise" - FirstBank Nigeria (simulated)**
 
 On 2026-02-20, FirstBank Nigeria's overnight fraud-detection system flagged
 a cluster of large unauthorised wire transfers.  Students investigate how an
@@ -57,21 +57,21 @@ docker compose up --build     # generates logs + starts Splunk
 
 | File | Description |
 |------|-------------|
-| `web_access.log` | Apache Combined Log — includes SQLi attack |
-| `transaction.log` | Core banking transactions — includes fraudulent transfers |
-| `windows_auth.log` | Windows Security Events — lateral movement + script exec |
-| `nessus_scan.csv` | Static Nessus export — 10 hosts, one with SQLi-relevant CVE |
+| `web_access.log` | Apache Combined Log - includes SQLi attack |
+| `transaction.log` | Core banking transactions - includes fraudulent transfers |
+| `windows_auth.log` | Windows Security Events - lateral movement + script exec |
+| `nessus_scan.csv` | Static Nessus export - 10 hosts, one with SQLi-relevant CVE |
 
 Each student's dataset is unique (seeded).  The entry-point host in
 `nessus_scan.csv`, the attacker IP in `web_access.log`, and the confirmed-
-compromise host flagged by `analysis.py` all refer to the same host — this
+compromise host flagged by `analysis.py` all refer to the same host - this
 chain holds for every seed.
 
 ## Technology Stack
 
-- **Splunk Enterprise 9.3.2** (free licence, ≤500 MB/day) — log analysis
-- **Python 3.10+** — student analysis script
-- **Docker Compose** — reproducible per-student environment
+- **Splunk Enterprise 9.3.2** (free licence, ≤500 MB/day) - log analysis
+- **Python 3.10+** - student analysis script
+- **Docker Compose** - reproducible per-student environment
 
 ## Licence
 

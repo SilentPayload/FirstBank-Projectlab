@@ -22,7 +22,7 @@ LOGS   = REPO / "logs"
 EXPORT = REPO / "logs" / "splunk_export.csv"
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Step 0 — ensure logs exist (run generator if not)
+# Step 0 - ensure logs exist (run generator if not)
 # ──────────────────────────────────────────────────────────────────────────────
 
 def ensure_logs(seed: int = 12345) -> None:
@@ -40,7 +40,7 @@ def ensure_logs(seed: int = 12345) -> None:
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Step 1 — build a mock Splunk CSV export from raw log files
+# Step 1 - build a mock Splunk CSV export from raw log files
 # ──────────────────────────────────────────────────────────────────────────────
 
 def build_mock_splunk_export() -> None:

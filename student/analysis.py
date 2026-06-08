@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-FirstBank Nigeria — SOC Incident Response Analysis
+FirstBank Nigeria - SOC Incident Response Analysis
 Student Script  (Phase 2)
 
 DISCLAIMER: All data processed by this script is entirely synthetic and
@@ -10,7 +10,7 @@ Instructions
 ------------
 1.  Run the data generator and start Splunk (see README.md).
 2.  Complete the TODO sections below.  Do NOT modify function signatures or
-    the main() block — the auto-grader relies on them.
+    the main() block - the auto-grader relies on them.
 3.  Run:  python analysis.py --nessus ../logs/nessus_scan.csv \
                               --splunk  splunk_export.csv \
                               --report  my_report.txt
@@ -65,7 +65,7 @@ class SplunkEvent:
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Task 1 — Parse Nessus CSV export
+# Task 1 - Parse Nessus CSV export
 # ──────────────────────────────────────────────────────────────────────────────
 
 def parse_nessus_csv(filepath: str) -> list[Vulnerability]:
@@ -90,15 +90,15 @@ def parse_nessus_csv(filepath: str) -> list[Vulnerability]:
     Hints
     -----
     * Open with ``csv.DictReader`` so column names are used as keys.
-    * The CVSS column is a string — cast it with ``float()``.
+    * The CVSS column is a string - cast it with ``float()``.
     * The ``Host`` column contains the IP address of the scanned target.
     """
     # TODO: implement this function
-    raise NotImplementedError("parse_nessus_csv — implement me!")
+    raise NotImplementedError("parse_nessus_csv - implement me!")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Task 2 — Parse Splunk CSV export
+# Task 2 - Parse Splunk CSV export
 # ──────────────────────────────────────────────────────────────────────────────
 
 def parse_splunk_export(filepath: str) -> list[SplunkEvent]:
@@ -106,7 +106,7 @@ def parse_splunk_export(filepath: str) -> list[SplunkEvent]:
     Parse a Splunk search-result CSV export and return a list of SplunkEvent
     objects ordered by timestamp ascending.
 
-    Expected CSV columns (from the recommended SPL — see README):
+    Expected CSV columns (from the recommended SPL - see README):
         _time, sourcetype, host, src_ip, AccountName,
         EventCode, CommandLine, Status, method, uri, useragent
 
@@ -131,11 +131,11 @@ def parse_splunk_export(filepath: str) -> list[SplunkEvent]:
     * ``_raw`` may or may not be present; store empty string if absent.
     """
     # TODO: implement this function
-    raise NotImplementedError("parse_splunk_export — implement me!")
+    raise NotImplementedError("parse_splunk_export - implement me!")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Task 3 — Risk scoring
+# Task 3 - Risk scoring
 # ──────────────────────────────────────────────────────────────────────────────
 
 def score_risk(host_vulns: list[Vulnerability]) -> float:
@@ -170,11 +170,11 @@ def score_risk(host_vulns: list[Vulnerability]) -> float:
         Risk score rounded to one decimal place.
     """
     # TODO: implement this function
-    raise NotImplementedError("score_risk — implement me!")
+    raise NotImplementedError("score_risk - implement me!")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Task 4 — Flag confirmed-compromise hosts
+# Task 4 - Flag confirmed-compromise hosts
 # ──────────────────────────────────────────────────────────────────────────────
 
 def flag_confirmed_compromise(
@@ -209,11 +209,11 @@ def flag_confirmed_compromise(
         Sorted list of IP addresses confirmed as compromised.
     """
     # TODO: implement this function
-    raise NotImplementedError("flag_confirmed_compromise — implement me!")
+    raise NotImplementedError("flag_confirmed_compromise - implement me!")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Task 5 — Generate report
+# Task 5 - Generate report
 # ──────────────────────────────────────────────────────────────────────────────
 
 def generate_report(findings: dict[str, Any], output_path: str) -> None:
@@ -222,13 +222,13 @@ def generate_report(findings: dict[str, Any], output_path: str) -> None:
 
     The ``findings`` dict has the following keys (all populated by main()):
 
-    ``entry_point``     : str  — IP of the web server where SQLi occurred
-    ``attacker_ip``     : str  — source IP of the attack (from web_access.log)
+    ``entry_point``     : str  - IP of the web server where SQLi occurred
+    ``attacker_ip``     : str  - source IP of the attack (from web_access.log)
     ``attack_timeline`` : list[tuple[str, str]]
                           Ordered list of (timestamp_str, event_description)
-    ``compromised_accounts`` : list[str] — victim account numbers
-    ``host_scores``     : dict[str, float] — {host_ip: risk_score}
-    ``confirmed_hosts`` : list[str] — IPs confirmed compromised
+    ``compromised_accounts`` : list[str] - victim account numbers
+    ``host_scores``     : dict[str, float] - {host_ip: risk_score}
+    ``confirmed_hosts`` : list[str] - IPs confirmed compromised
 
     Required report sections (match these headings exactly):
     1. EXECUTIVE SUMMARY
@@ -241,18 +241,18 @@ def generate_report(findings: dict[str, Any], output_path: str) -> None:
     Parameters
     ----------
     findings    : dict[str, Any]
-    output_path : str  — path to the output .txt file
+    output_path : str  - path to the output .txt file
 
     Returns
     -------
     None  (side-effect: file written)
     """
     # TODO: implement this function
-    raise NotImplementedError("generate_report — implement me!")
+    raise NotImplementedError("generate_report - implement me!")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Helper utilities (provided — do not modify)
+# Helper utilities (provided - do not modify)
 # ──────────────────────────────────────────────────────────────────────────────
 
 def _group_by_host(vulns: list[Vulnerability]) -> dict[str, list[Vulnerability]]:
@@ -295,7 +295,7 @@ def _load_manifest(logs_dir: str) -> dict:
 
 def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
-        description="FirstBank Nigeria SOC — Incident Analysis Tool"
+        description="FirstBank Nigeria SOC - Incident Analysis Tool"
     )
     p.add_argument("--nessus", required=True,
                    help="Path to nessus_scan.csv (from data-generator output)")

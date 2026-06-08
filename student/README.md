@@ -1,6 +1,6 @@
-# FirstBank Nigeria — SOC Incident Response Training
+# FirstBank Nigeria - SOC Incident Response Training
 
-> **DISCLAIMER — SYNTHETIC DATA**
+> **DISCLAIMER - SYNTHETIC DATA**
 > Every IP address, account number, transaction amount, hostname, log entry,
 > and vulnerability finding in this exercise is entirely fabricated for
 > authorized cybersecurity training purposes only.  No real bank customers,
@@ -49,7 +49,7 @@ You have access to:
 - Python 3.10+
 - Git
 
-### 1 — Clone and configure
+### 1 - Clone and configure
 
 ```bash
 git clone <repo-url>
@@ -65,7 +65,7 @@ STUDENT_SEED=<your seed here>
 SPLUNK_PASSWORD=Training123!
 ```
 
-### 2 — Generate logs and start Splunk
+### 2 - Generate logs and start Splunk
 
 ```bash
 docker compose up --build
@@ -78,13 +78,13 @@ Docker will:
 
 Splunk takes ~90 seconds to fully start.
 
-### 3 — Log in to Splunk
+### 3 - Log in to Splunk
 
 Open your browser: **http://localhost:8000**
 Username: `admin`
 Password: whatever you set in `.env` (default: `Training123!`)
 
-### 4 — Verify ingestion
+### 4 - Verify ingestion
 
 In Splunk Search, run:
 
@@ -99,7 +99,7 @@ You should see three sourcetypes:
 
 If any are missing, wait 30 seconds and retry (the monitor poller runs every 15 s).
 
-### 5 — Pulling updates
+### 5 - Pulling updates
 
 ```bash
 git pull
@@ -112,12 +112,12 @@ Your `.env` and any completed code are not tracked by git and will not be overwr
 
 ## Phases and Tasks
 
-### Phase 1 — Splunk Investigation (40 points)
+### Phase 1 - Splunk Investigation (40 points)
 
 Work in the Splunk Search interface.  Save each SPL query and its results as
 a screenshot for inclusion in your Phase 3 report.
 
-#### Task 1.1 — Identify the SQL injection (10 pts)
+#### Task 1.1 - Identify the SQL injection (10 pts)
 
 Find the SQL injection attempt on the `/login` endpoint.
 
@@ -134,7 +134,7 @@ index=banking_soc sourcetype=access_combined
 | sort _time
 ```
 
-#### Task 1.2 — Trace lateral movement (10 pts)
+#### Task 1.2 - Trace lateral movement (10 pts)
 
 After gaining initial access, the attacker hijacked a service account and
 pivoted to the transaction processing server.
@@ -152,7 +152,7 @@ index=banking_soc sourcetype=windows_auth_training
 | sort _time
 ```
 
-#### Task 1.3 — Find the transfer script execution (10 pts)
+#### Task 1.3 - Find the transfer script execution (10 pts)
 
 The attacker executed a Python script on the transaction server.
 
@@ -167,7 +167,7 @@ index=banking_soc sourcetype=windows_auth_training EventCode=4688
 | sort _time
 ```
 
-#### Task 1.4 — Isolate the fraudulent transfer window (10 pts)
+#### Task 1.4 - Isolate the fraudulent transfer window (10 pts)
 
 - List all **fraudulent transaction IDs** (`TxnID`).
 - What are the **victim account numbers** (`FromAccount`)?
@@ -183,10 +183,10 @@ index=banking_soc sourcetype=banking_transaction
 | sort _time
 ```
 
-#### Task 1.5 — Reconstruct the full attack timeline
+#### Task 1.5 - Reconstruct the full attack timeline
 
 Combine all sources into a single ordered timeline.  Export the results as CSV
-(click **Export → CSV** in Splunk) and save as `splunk_export.csv` — you will
+(click **Export → CSV** in Splunk) and save as `splunk_export.csv` - you will
 need it for Phase 2.
 
 ```spl
@@ -211,7 +211,7 @@ index=banking_soc
 
 ---
 
-### Phase 2 — Python Analysis (40 points)
+### Phase 2 - Python Analysis (40 points)
 
 Complete the five function stubs in `student/analysis.py`.
 
@@ -226,13 +226,13 @@ python analysis.py \
 The script will raise `NotImplementedError` for each unimplemented function.
 Work through them in order (Tasks 1 → 5); each feeds the next.
 
-#### Task 2.1 — `parse_nessus_csv()` (8 pts)
+#### Task 2.1 - `parse_nessus_csv()` (8 pts)
 
 Open `nessus_scan.csv` with `csv.DictReader`.  For each row, construct a
 `Vulnerability` object.  Cast the `"CVSS v2.0 Base Score"` column to `float`;
 skip rows where this fails.
 
-#### Task 2.2 — `parse_splunk_export()` (8 pts)
+#### Task 2.2 - `parse_splunk_export()` (8 pts)
 
 Open the `splunk_export.csv` you exported in Task 1.5.  Parse the `_time`
 column into a `datetime` object (Splunk exports ISO-8601 with timezone).
@@ -242,7 +242,7 @@ timestamp ascending.
 Common Splunk timestamp format: `%Y-%m-%dT%H:%M:%S.%f%z`
 Fallback: `%Y-%m-%d %H:%M:%S`
 
-#### Task 2.3 — `score_risk()` (8 pts)
+#### Task 2.3 - `score_risk()` (8 pts)
 
 Implement the weighted-CVSS formula documented in the function's docstring.
 Your implementation must satisfy:
@@ -251,14 +251,14 @@ Your implementation must satisfy:
 - Single CVSS 10.0 Critical → score > 73
 - Three or more CVSS 10.0 Criticals → score = 100.0
 
-#### Task 2.4 — `flag_confirmed_compromise()` (8 pts)
+#### Task 2.4 - `flag_confirmed_compromise()` (8 pts)
 
 Find the intersection of Nessus host IPs and IPs seen in attack-relevant
 Splunk events (`EventCode` in `{4624, 4648, 4672, 4688, 4689, 5140}`).
 
 Check the `SourceIP` field and the raw event text for IP addresses.
 
-#### Task 2.5 — `generate_report()` (8 pts)
+#### Task 2.5 - `generate_report()` (8 pts)
 
 Write a plain-text report to `output_path` containing the six required sections
 (listed in the function's docstring).  The file should be human-readable and
@@ -266,7 +266,7 @@ suitable for inclusion as an appendix to your Phase 3 submission.
 
 ---
 
-### Phase 3 — Written Report (20 points + 10 bonus)
+### Phase 3 - Written Report (20 points + 10 bonus)
 
 Submit a **15–20 page report** (PDF, 12pt, 1-inch margins) covering:
 
@@ -279,14 +279,14 @@ Submit a **15–20 page report** (PDF, 12pt, 1-inch margins) covering:
 
 **Regulatory section must reference at least two of:**
 
-- **CBN Risk-Based Cybersecurity Framework (2022)** — 2-hour incident
+- **CBN Risk-Based Cybersecurity Framework (2022)** - 2-hour incident
   notification window; root-cause analysis within 5 business days.
-- **BOFIA 2020 s.62** — mandatory disclosure of material cybersecurity incidents
+- **BOFIA 2020 s.62** - mandatory disclosure of material cybersecurity incidents
   to the CBN Governor.
-- **Nigeria Data Protection Act (NDPA) 2023 s.40** — notify NDPC within
+- **Nigeria Data Protection Act (NDPA) 2023 s.40** - notify NDPC within
   72 hours of confirmed data breach; notify affected customers without
   undue delay.
-- **PCI DSS v4.0** — if payment card data may be in scope.
+- **PCI DSS v4.0** - if payment card data may be in scope.
 
 **Bonus (10 pts):** Correctly identify all compromised customer accounts (+5)
 and map at least three attack steps to MITRE ATT&CK Enterprise TTPs (+5).
@@ -306,8 +306,8 @@ and map at least three attack steps to MITRE ATT&CK Enterprise TTPs (+5).
 
 ## Submitting
 
-1. `incident_report.txt` — generated by `analysis.py`
-2. `student/analysis.py` — your completed Python file
+1. `incident_report.txt` - generated by `analysis.py`
+2. `student/analysis.py` - your completed Python file
 3. Splunk screenshots (one per Task 1.x)
 4. Phase 3 PDF report
 

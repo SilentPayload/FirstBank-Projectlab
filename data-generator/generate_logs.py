@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-FirstBank Nigeria SOC Training — Synthetic Log Generator
+FirstBank Nigeria SOC Training - Synthetic Log Generator
 
 DISCLAIMER: All data produced by this script is entirely synthetic and
 fabricated for authorized cybersecurity training purposes only.  No real
@@ -395,7 +395,7 @@ def generate_windows_auth_log(sc: dict, rng: random.Random, out: Path) -> None:
                            Privileges="SeBackupPrivilege SeRestorePrivilege",
                            Status="Success"))
 
-    # ── T3: Lateral movement — svc account connects to transaction server ─────
+    # ── T3: Lateral movement - svc account connects to transaction server ─────
     lines.append(auth_line(sc["t3"],
                            EventCode="4624",
                            LogonType="3",
@@ -496,7 +496,7 @@ def generate_nessus_csv(sc: dict, rng: random.Random, out: Path) -> None:
                 "Description":          f"Detected on host {host}:{port}. {synopsis}",
                 "Solution":             solution,
                 "See Also":             f"https://nvd.nist.gov/vuln/detail/{cve}",
-                "Plugin Output":        f"Plugin fired on {host}:{port} — {name}.",
+                "Plugin Output":        f"Plugin fired on {host}:{port} - {name}.",
             })
 
     out_path = out / "nessus_scan.csv"
@@ -541,7 +541,7 @@ def main() -> None:
     out = Path(output_dir_str)
     out.mkdir(parents=True, exist_ok=True)
 
-    print(f"\n[*] FirstBank Nigeria SOC Training — Log Generator")
+    print(f"\n[*] FirstBank Nigeria SOC Training - Log Generator")
     print(f"[*] Seed : {seed}")
     print(f"[*] Output : {out.resolve()}\n")
 
