@@ -1,8 +1,8 @@
 # Banking SOC Incident Response Training Lab
 
 ```
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                    ⚠  SYNTHETIC TRAINING DATA ONLY  ⚠                      ║
+
+
 ║                                                                              ║
 ║  All IP addresses, account numbers, transaction records, hostnames,          ║
 ║  vulnerability findings, and log entries in this repository are ENTIRELY     ║
