@@ -1,5 +1,3 @@
-version: "3.9"
-
 # ──────────────────────────────────────────────────────────────────────────────
 # FirstBank Nigeria SOC Training - Docker Compose
 #
@@ -12,6 +10,7 @@ version: "3.9"
 #       Login: admin / <your SPLUNK_PASSWORD>
 # ──────────────────────────────────────────────────────────────────────────────
 
+name: firstbank-soc-lab
 services:
 
   # ── Step 1: generate synthetic logs ─────────────────────────────────────────
